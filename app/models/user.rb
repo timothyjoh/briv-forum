@@ -1,6 +1,16 @@
+require 'securerandom'
+
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  mount_uploader :avatar, AvatarUploader
+
+  validates_uniqueness_of :username_seed, scope: :username
+
+  before_create :generate_username_seed
+
+  def generate_username_seed
+    self.username_seed = SecureRandom.hex(4)
+  end
 end
