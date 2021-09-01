@@ -17,6 +17,7 @@
 import "core-js/stable"
 import "regenerator-runtime/runtime"
 import 'jquery/jquery'
+import 'popper.js/dist/popper'
 
 import 'jquery-ujs/src/rails'
 import 'bootstrap'

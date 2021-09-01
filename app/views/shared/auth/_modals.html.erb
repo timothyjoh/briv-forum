@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+  <%= render 'shared/auth/profile' %>
+<% else %>
+  <%= render 'shared/auth/login' %>
+  <%= render 'shared/auth/signup' %>
+<% end %>

@@ -11,6 +11,6 @@ class User < ApplicationRecord
   before_create :generate_username_seed
 
   def generate_username_seed
-    self.username_seed = SecureRandom.hex(4)
+    self.username_seed = (SecureRandom.random_number(9e4) + 1e4).to_i.to_s
   end
 end
