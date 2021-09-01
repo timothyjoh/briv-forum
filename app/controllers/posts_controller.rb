@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.includes(:user, :comments).order(created_at: :desc)
   end
 
   def show
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.includes(:user, comments: [:user]).find(params[:id])
   end
 
   def post_params

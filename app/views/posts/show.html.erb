@@ -36,8 +36,11 @@
 <% else %>
 
   <% @post.comments.each do |comment| %>
-    <div class="panel panel-default">
-      <div class="panel-heading">Comment from <%= comment.user.username || 'Anon' %> &mdash; <%= time_ago_in_words comment.created_at %> ago</div>
+    <div class="panel <%= comment.user == @post.user ? 'panel-info' : 'panel-default' %>">
+      <div class="panel-heading">
+        Comment from <strong><%= comment.user == @post.user ? 'Author' : '' %></strong> <%= comment.user.username || 'Anon' %>
+        &mdash; <%= time_ago_in_words comment.created_at %> ago
+      </div>
       <div class="panel-body">
         <%= image_tag(comment.picture_url, class: 'comment') if comment.picture_url %>
         <%= markdown(comment.body) %>
