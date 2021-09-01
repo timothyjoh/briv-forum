@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h1><%= @post.title %></h1>
+      <p class="lead">
+        Posted by:
+        <%= image_tag @post.user.avatar_url(:thumbnail), :width => 32, :height => 32, class: 'avatar' if @post.user.avatar_url %>
+        <%= @post.user.username %> &mdash; <%= time_ago_in_words(@post.created_at) %> ago
+      </p>
+    </div>
+  </div>
+</div>
+
+<%= image_tag(@post.picture_url, class: 'show') if @post.picture_url %>
+
+<div class="row push-down post-markdown">
+  <div class="col-lg-12">
+    <%= markdown(@post.body) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="page-header">
+      <h3>Comments <span class="badge"><%= @post.comments.count %></span></h3>
+    </div>
+  </div>
+</div>
+
+<% unless user_signed_in? %>
+  <div class="alert alert-dismissible alert-warning">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h4>You must be signed in to see comments!</h4>
+    <p>You can create an account with the links above, or <%= link_to "log in", new_session_path(User) %>.</p>
+  </div>
+<% else %>
+
+  <% @post.comments.each do |comment| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">Comment from <%= comment.user.username || 'Anon' %> &mdash; <%= time_ago_in_words comment.created_at %> ago</div>
+      <div class="panel-body">
+        <%= image_tag(comment.picture_url, class: 'comment') if comment.picture_url %>
+        <%= markdown(comment.body) %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= render 'posts/comment_form' %>
+<% end %>

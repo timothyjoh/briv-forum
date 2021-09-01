@@ -10,4 +10,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
     process :eager => true
     process :resize_to_fit => [64, 64, :north]
   end
+
+  def extension_allowlist
+    %w(jpg jpeg gif png)
+  end
 end

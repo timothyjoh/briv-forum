@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   mount_uploader :avatar, AvatarUploader
+  has_many :posts
+  has_many :comments
 
   validates_uniqueness_of :username_seed, scope: :username
-
   before_create :generate_username_seed
 
   def generate_username_seed

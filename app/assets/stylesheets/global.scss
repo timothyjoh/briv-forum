@@ -1,11 +1,12 @@
-.row {
-  &.push-down {
-    margin-top: 5rem;
-  }
+.push-down {
+  margin-top: 5rem;
 }
 
 img.avatar {
   border-radius: 50%;
+}
+img.comment {
+  margin-bottom: 2rem;
 }
 
 legend {
@@ -13,4 +14,35 @@ legend {
     margin-right: 1rem;
     margin-bottom: 1rem;
   }
+}
+
+.alert {
+  p a {
+    color: #fff;
+    text-decoration: underline;
+  }
+}
+a.list-group-item {
+  position: relative;
+  span {
+    display: block;
+    &.list-group-item-heading {
+      color: #158cba;
+      font-size: 4rem;
+
+    }
+  }
+  img.index {
+    position: absolute;
+    right: 1rem; top: 1rem;
+    border-radius: 1rem;
+  }
+  .badge.comments {
+    position: absolute;
+    right: 1rem; bottom: 1rem;
+  }
+}
+
+.post-markdown {
+  font-size: 2rem;
 }
