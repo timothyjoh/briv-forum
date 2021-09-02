@@ -1,0 +1,5 @@
+hello_world:
+  id: 1
+  title: Hello World
+  body: This is a fixture post
+  user_id: 1

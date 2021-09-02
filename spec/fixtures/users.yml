@@ -1,0 +1,11 @@
+erlich:
+  id: 1
+  email: erlich@aviato.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, "bachmanity") %>
+  username: ceoofaviato
+
+jian_yang:
+  id: 2
+  email: jian_yang@newpiedpiper.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, "erlichisafatpig") %>
+  username: jianyang

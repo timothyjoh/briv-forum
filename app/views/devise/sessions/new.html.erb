@@ -3,10 +3,15 @@
       <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
               <div class="well">
-
-                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {id: 'authenticate'}) do |f| %>
                   <fieldset>
                     <legend>Log in</legend>
+                    <% flash.each do |name, msg| %>
+                      <div class="alert alert-dismissible alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <%= content_tag :h4, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+                      </div>
+                    <% end %>
 
                     <div class="form-group">
                         <%= f.label :email, class: 'control-label' %>

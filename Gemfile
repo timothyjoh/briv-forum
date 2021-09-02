@@ -57,6 +57,9 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-rspec', require: false
+  gem 'shoulda-matchers'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
